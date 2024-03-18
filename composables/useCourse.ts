@@ -1,7 +1,7 @@
 import type { CoursewithPath } from '~/types/course';
 
 interface CoursesReturn {
-  course: Maybe<CoursewithPath>;
+  course: Maybe2<CoursewithPath>;
   prevCourse: Maybe<CoursewithPath>;
   nextCourse: Maybe<CoursewithPath>;
 }
