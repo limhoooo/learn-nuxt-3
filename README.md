@@ -29,3 +29,16 @@ setup 은 컴포넌트내 라이프사이클 에 의존되는 setup 함수내에
 NuxtLink 로 사용하여 이동할 페이지를 지정하면 그 해당 페이지는 prefetching 처리되어
 미리 로드해서 가져온다.
 또한 보이는 viewport 에만 미리 로드를 해온다. 
+
+# Layout 
+여러 레이아웃을 사용해야할때
+definePageMeta({
+  layout: 'admin',
+});
+를 이용해서 페이지별 layout(layout/admin) 을 이용할수있다
+
+# 중첩라우트
+page 에 
+<NuxtLayout name="custom"> 이렇게 사용하면
+해당 page 에는
+layout/custom 의 레이아웃을 사용할수있다
