@@ -110,7 +110,7 @@ definePageMeta({
   pageType: '',
   // 컴포넌트 캐싱처리
   keepalive: true,
-  alias: ['/lecture/:coureseSlug'],
+  // alias: ['/lecture/:coureseSlug'],
 });
 const memo = ref('');
 const completed = ref(false);

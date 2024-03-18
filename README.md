@@ -18,4 +18,14 @@ pages 폴더 에 page 만든후 루트 컴포넌트에서 <NuxtPage /> 를 이�
 # layouts
  <NuxtLayout> 와 slot 을 이용함
 
-# 
+# script setup 차이점
+setup 은 컴포넌트내 라이프사이클 에 의존되는 setup 함수내에서 실행되는 script 이다.
+```
+<script lang="ts"> : script 는 일반 자바스크립트 script 처럼 타 컴포넌트에서 import 해올시 바로 실행
+<script setup lang="ts"> : script 는 컴포넌트가 실행될때 호출된다.
+```
+
+# NuxtLink 
+NuxtLink 로 사용하여 이동할 페이지를 지정하면 그 해당 페이지는 prefetching 처리되어
+미리 로드해서 가져온다.
+또한 보이는 viewport 에만 미리 로드를 해온다. 

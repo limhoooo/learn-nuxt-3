@@ -4,4 +4,5 @@
       "source.fixAll.eslint": "explicit"
     },
     "editor.tabSize": 2,
+    "vetur.validation.interpolation": false,
   }

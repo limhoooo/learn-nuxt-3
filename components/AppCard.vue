@@ -20,8 +20,8 @@
 
 <script setup lang="ts">
 interface Props {
-  title: string;
-  age: number;
+  title?: string;
+  age?: number;
 }
 const { title, age } = defineProps<Props>();
 </script>
