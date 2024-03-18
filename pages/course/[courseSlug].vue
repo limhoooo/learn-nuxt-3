@@ -45,6 +45,29 @@
       <p class="q-mt-lg text-grey-8">
         {{ course?.content }}
       </p>
+      <template #footer>
+        <q-btn
+          v-if="prevCourse"
+          :to="prevCourse.path"
+          label="이전강의"
+          color="primary"
+          unelevated
+        />
+        <q-btn
+          label="쿼리 추가"
+          color="dark"
+          unelevated
+          :to="{ path: $route.path, query: { timestamp: Date.now() } }"
+        />
+        <q-space />
+        <q-btn
+          v-if="nextCourse"
+          :to="nextCourse.path"
+          label="다음강의"
+          color="primary"
+          unelevated
+        />
+      </template>
     </AppCard>
   </div>
 </template>
@@ -53,7 +76,12 @@
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 // api
-const { course } = useCourse(courseSlug);
+const { course, prevCourse, nextCourse } = useCourse(courseSlug);
+console.log('reload');
+
+definePageMeta({
+  key: (route) => route.fullPath,
+});
 </script>
 
 <style scoped></style>
