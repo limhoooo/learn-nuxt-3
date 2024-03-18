@@ -1,3 +1,5 @@
+https://gymcoding.notion.site/Nuxt-Framework-b7a2ca1c4c08456ebf77d0d1ffefda7a
+
 # nuxt3 부턴 nuxi 라는 nuxt3에 최적화된 명령어를 사용한다.
 ex : nuxt dev -> nuxi dev
 
@@ -15,3 +17,5 @@ pages 폴더 에 page 만든후 루트 컴포넌트에서 <NuxtPage /> 를 이�
 
 # layouts
  <NuxtLayout> 와 slot 을 이용함
+
+# 

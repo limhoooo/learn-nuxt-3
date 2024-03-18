@@ -46,27 +46,29 @@
         {{ course?.content }}
       </p>
       <template #footer>
-        <q-btn
-          v-if="prevCourse"
-          :to="prevCourse.path"
-          label="이전강의"
-          color="primary"
-          unelevated
-        />
-        <q-btn
-          label="쿼리 추가"
-          color="dark"
-          unelevated
-          :to="{ path: $route.path, query: { timestamp: Date.now() } }"
-        />
-        <q-space />
-        <q-btn
-          v-if="nextCourse"
-          :to="nextCourse.path"
-          label="다음강의"
-          color="primary"
-          unelevated
-        />
+        <ClientOnly>
+          <q-btn
+            v-if="prevCourse"
+            :to="prevCourse.path"
+            label="이전강의"
+            color="primary"
+            unelevated
+          />
+          <q-btn
+            label="쿼리 추가"
+            color="dark"
+            unelevated
+            :to="{ path: $route.path, query: { timestamp: Date.now() } }"
+          />
+          <q-space />
+          <q-btn
+            v-if="nextCourse"
+            :to="nextCourse.path"
+            label="다음강의"
+            color="primary"
+            unelevated
+          />
+        </ClientOnly>
       </template>
     </AppCard>
   </div>
@@ -79,8 +81,12 @@ const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
 console.log('reload');
 
+// definePageMeta 는 스크립트내 변수와 같이 사용하지 못한다.
 definePageMeta({
+  // url query 변경시에도 랜더링되게끔 해줌
   key: (route) => route.fullPath,
+  title: 'My Home page',
+  pageType: '',
 });
 </script>
 
