@@ -100,7 +100,7 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 // api
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
-console.log(course);
+// console.log(course);
 
 // if (!course) {
 //   throw createError({
@@ -119,17 +119,37 @@ definePageMeta({
   // 컴포넌트 캐싱처리
   // keepalive: true,
   // alias: ['/lecture/:coureseSlug'],
-  validate: (route) => {
-    const courseSlug = route.params.coureseSlug as string;
+  // validate: (route) => {
+  //   const courseSlug = route.params.courseSlug as string;
+  //   const { course } = useCourse(courseSlug);
+  //   if (!course) {
+  //     throw createError({
+  //       statusCode: 404,
+  //       statusMessage: 'Course not found',
+  //       // fatal: true,
+  //     });
+  //   }
+  //   return true;
+  // },
+  middleware: (route) => {
+    console.log(route);
+
+    const courseSlug = route.params.courseSlug as string;
     const { course } = useCourse(courseSlug);
+    console.log(courseSlug);
+    console.log(course);
+
     if (!course) {
-      throw createError({
-        statusCode: 404,
-        statusMessage: 'Course not found',
-        // fatal: true,
-      });
+      // return navigateTo('/');
+      return abortNavigation(
+        createError({
+          statusCode: 404,
+          statusMessage: 'Course not found',
+          // 서버오류로 인지하게끔 변경
+          fatal: true,
+        }),
+      );
     }
-    return true;
   },
 });
 const memo = ref('');

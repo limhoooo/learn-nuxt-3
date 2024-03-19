@@ -12,6 +12,8 @@ export default defineNuxtPlugin(({ vueApp }) => {
         about: 'About',
         youtube: 'Youtube',
         admin: 'Admin',
+        login: 'Login',
+        logout: 'Logout',
       },
       ko: {
         logo: '뷰 & 넉스트 완전 강의',
@@ -19,6 +21,8 @@ export default defineNuxtPlugin(({ vueApp }) => {
         about: '어바웃',
         youtube: '유튜브',
         admin: '관리자',
+        login: '로그인',
+        logout: '로그아웃',
       },
     },
   });
