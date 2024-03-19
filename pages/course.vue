@@ -21,6 +21,9 @@
                 {{ index + 1 }}. {{ course.title }}
               </q-item-section>
             </q-item>
+            <q-item v-ripple :to="`/course/empty`">
+              <q-item-section> Empty Course Error </q-item-section>
+            </q-item>
             <NuxtLink
               v-slot="{ navigate }"
               prefetched-class="bg-yellow"
@@ -49,7 +52,22 @@
         </q-card>
       </div>
       <div class="col">
-        <NuxtPage />
+        <NuxtErrorBoundary>
+          <NuxtPage />
+          <template #error="{ error }">
+            <div class="flex flex-center column q-py-xl">
+              <div class="text-h6 q-mb-lg">
+                {{ error }}
+              </div>
+              <q-btn
+                label="Reset"
+                color="positive"
+                no-caps
+                @click="error.value = null"
+              />
+            </div>
+          </template>
+        </NuxtErrorBoundary>
       </div>
     </div>
   </q-page>

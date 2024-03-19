@@ -45,3 +45,14 @@ layout/custom 의 레이아웃을 사용할수있다
 
 # 외부라이브러리는 auto import 지원안함
 next.config 에 등록해서 사용가능
+
+# 유니버설 랜더링
+SSr + CSR
+초기랜더링만 SSR 이고 이후 랜더링은 CSR
+하이드레이션 오류시 ClientOnly 태그 사용
+
+# nuxt 플러그인 기능으로 라이프사이클 훅을 이용한 error-handler 을 만들어 공통 에러 모듈을 만들수있다
+createError는 서버 측에서 발생한 에러를 처리하거나 전체 화면 에러 페이지를 트리거하는 데 사용되며, 
+showError는 클라이언트 측에서 특정 시점에 에러 페이지를 표시하는 데 사용된다.
+
+# definePageMeta 를 사용할때 같은 script 라도 외부 변수를 사용할수없다.

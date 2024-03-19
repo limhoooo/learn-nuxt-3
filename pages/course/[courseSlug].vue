@@ -54,7 +54,7 @@
           unelevated
           :outline="completed ? false : true"
           :icon="completed ? 'check' : undefined"
-          @click="completed = !completed"
+          @click="toggleComplete"
         />
         <q-input
           v-model="memo"
@@ -100,7 +100,15 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 // api
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
-console.log('reload');
+console.log(course);
+
+// if (!course) {
+//   throw createError({
+//     statusCode: 404,
+//     statusMessage: 'Course not found',
+//     // fatal: true,
+//   });
+// }
 
 // definePageMeta 는 스크립트내 변수와 같이 사용하지 못한다.
 definePageMeta({
@@ -109,14 +117,33 @@ definePageMeta({
   title: 'My Home page',
   pageType: '',
   // 컴포넌트 캐싱처리
-  keepalive: true,
+  // keepalive: true,
   // alias: ['/lecture/:coureseSlug'],
+  validate: (route) => {
+    const courseSlug = route.params.coureseSlug as string;
+    const { course } = useCourse(courseSlug);
+    if (!course) {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Course not found',
+        // fatal: true,
+      });
+    }
+    return true;
+  },
 });
 const memo = ref('');
 const completed = ref(false);
 
 const movePage = async (path: string) => {
   await navigateTo(path);
+};
+
+const toggleComplete = () => {
+  // showError('에러가 발생했습니다.');
+  throw createError('에러가 발생했습니다.');
+  // completed.value = !completed.value;
+  // $fetch('api/error');
 };
 </script>
 
