@@ -12,6 +12,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@vueuse/nuxt',
   ],
+
+  // 다국어 처리
   i18n: {
     locales: ['en', 'ko'], // URL 경로 접두사에 사용됨
     defaultLocale: 'ko', // Nuxt 페이지 및 라우팅을 위한 프로젝트의 기본 로케일

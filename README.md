@@ -42,3 +42,6 @@ page 에
 <NuxtLayout name="custom"> 이렇게 사용하면
 해당 page 에는
 layout/custom 의 레이아웃을 사용할수있다
+
+# 외부라이브러리는 auto import 지원안함
+next.config 에 등록해서 사용가능
