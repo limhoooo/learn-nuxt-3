@@ -4,6 +4,8 @@
 
     <q-input v-model="form.passwowrd" filled type="password" label="password" />
 
+    <div v-if="error" class="text-red text-center">{{ error.message }}</div>
+
     <div class="q-mt-lg">
       <q-btn
         class="full-width"
@@ -24,6 +26,8 @@ const emit = defineEmits<{
 }>();
 // const emit = defineEmits(['success']);
 
+const { signIn } = useAuth();
+
 const form = ref({
   email: '',
   passwowrd: '',
@@ -37,7 +41,7 @@ const handleLoginSubmit = () => {
     loading.value = true;
 
     // login business logic
-
+    signIn(form.value.email, form.value.passwowrd);
     emit('success');
   } catch (err: unknown) {
     if (err instanceof Error) {
