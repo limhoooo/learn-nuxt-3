@@ -2,7 +2,7 @@
   <q-layout view="hHh lpR fFf" class="bg-grey-2">
     <q-header elevated class="bg-dark text-white">
       <q-toolbar>
-        <q-toolbar-title>{{ $t('logo') }}</q-toolbar-title>
+        <q-toolbar-title>{{ $t('logo') }} {{ counter }}</q-toolbar-title>
         <q-separator dark vertical />
         <NuxtLink v-slot="{ navigate }" custom to="/">
           <q-btn stretch flat :label="$t('home')" no-caps @click="navigate()" />
@@ -88,8 +88,13 @@
 </template>
 
 <script setup lang="ts">
-const { authUser, isAuthenticated } = useAuthUser();
-const { signOut } = useAuth();
+// const authUser = useAuthUser();
+// const isAuthenticated = useAuthenticated();
+// const { signOut } = useAuth();
+const authStore = useAuthStore();
+const { user: authUser, isAuthenticated } = storeToRefs(authStore);
+const { signOut } = authStore;
+
 const pageContainerStyle = computed(() => ({
   maxWidth: '1080px',
   margin: '0 auto',
@@ -116,4 +121,6 @@ const { locale } = useI18n();
 const selectedLanguageName = computed(
   () => languages.value.find((item) => item.code === locale.value)?.name,
 );
+
+const counter = useState<number>('counter');
 </script>
