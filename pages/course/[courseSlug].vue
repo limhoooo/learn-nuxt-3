@@ -99,7 +99,7 @@
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 // api
-const { course, prevCourse, nextCourse } = useCourse(courseSlug);
+const { course, prevCourse, nextCourse } = (await useCourse(courseSlug)) || {};
 // console.log(course);
 
 // if (!course) {
@@ -131,11 +131,11 @@ definePageMeta({
   //   }
   //   return true;
   // },
-  middleware: (route) => {
+  middleware: async (route) => {
     console.log(route);
 
     const courseSlug = route.params.courseSlug as string;
-    const { course } = useCourse(courseSlug);
+    const { course } = (await useCourse(courseSlug)) || {};
     console.log(courseSlug);
     console.log(course);
 

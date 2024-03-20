@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 // Lists api
-const { courses } = useCourses();
+const { courses } = await useCourses();
 </script>
 
 <style lang="scss" scoped></style>

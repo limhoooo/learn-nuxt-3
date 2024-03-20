@@ -73,3 +73,8 @@ key를 이용함
 
 # useRequestHeaders 
 서버사이드일때 요청헤더를 가져올수있다
+
+# 피니아 상태유지
+pinia-plugin-persistedstate
+
+# useCookie 

@@ -122,5 +122,7 @@ const selectedLanguageName = computed(
   () => languages.value.find((item) => item.code === locale.value)?.name,
 );
 
+watch(locale, (val) => (useCookie('locale').value = val));
+
 const counter = useState<number>('counter');
 </script>

@@ -20,3 +20,9 @@ export interface CoursewithPath
   studentCount: string;
   path: string;
 }
+
+export interface CoursesReturn {
+  course: Maybe2<CoursewithPath>;
+  prevCourse: Maybe<CoursewithPath>;
+  nextCourse: Maybe<CoursewithPath>;
+}
